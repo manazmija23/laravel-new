@@ -74,15 +74,15 @@ footer{
 }
 
 .main{
-    width: 960px;
+    width: 1200px;
     margin: auto;
     margin-bottom: 50px;
     margin-top: 100px;
 }
 
 .blog-article{
-    width: 700px;
-    margin-bottom: 20px;
+    width: 330px;
+    margin-bottom: 10px;
     margin-top: 20px;
     padding: 20px 40px;
     background-color: white;
@@ -141,7 +141,7 @@ nav a:hover{
 }
 
 .img-blog{
-    width: 300px;
+
     margin: 0 auto;
     display: flex;
 }
@@ -229,7 +229,7 @@ nav a:hover{
 }
 
 .sidebar{
-    width: 250px;
+    width: 230px;
     height: 500px;
     background-color: white;
     margin-top: 20px;
@@ -243,10 +243,12 @@ nav a:hover{
 
 .sidebar-flex a{
     margin: 10px auto;
+    font-size: 15px;
 }
 
 .sidebar-flex h3{
     color: black;
+    font-size: 15px;
 }
 
 .flex-main{
@@ -270,6 +272,13 @@ nav a:hover{
 
 .blog-single{
     width: 960px;
+    margin: 0 auto;
+}
+
+.blog-admin-article{
+    width: 340px;
+    margin: 5px auto;
+    justify-content: center;
 }
 
 .published{
@@ -534,4 +543,21 @@ tr{
 
 #cart{
     color: red;
+}
+
+.login-name{
+    position: absolute;
+    top: 8px;
+    right: 30px;
+}
+
+.flex-articles{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.admin-button{
+    margin-bottom: 20px;
+    margin-left: 30px;
 }

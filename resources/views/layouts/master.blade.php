@@ -23,22 +23,32 @@
 
     <header>
 
-            @if (Auth::guest())
+    </header>
 
-            @else
-                <div class="dropdown">
-                    <button class="dropdown-toggle btn btn-default"  data-toggle="dropdown">{{ Auth::user()->name }}
+        @if(Auth::guard('admin')->check())
+
+            <header class="admin-header">
+                <img class="logo" src="images/logo.png" alt="">
+                <nav class="admin-dashboard">
+                    <a class="{{ Request::url() == url('/admin') ? 'active-nav-admin' : '' }}" href={{asset('admin')}}>Posts</a>
+                    <a class="{{ Request::url() == url('/products-dash') ? 'active-nav-admin' : '' }}" href={{asset('products-dash')}}>Products</a>
+                    <a class="{{ Request::url() == url('/comments-dash') ? 'active-nav-admin' : '' }}" href={{asset('comments-dash')}}>Post Comments</a>
+                    <a class="{{ Request::url() == url('/products-comments') ? 'active-nav-admin' : '' }}" href={{asset('products-comments')}}>Product Comments</a>
+                    <a class="{{ Request::url() == url('/messages') ? 'active-nav-admin' : '' }}" href={{asset('messages')}}>Messages</a>
+                </nav>
+
+                <div class="dropdown login-name">
+                    <button class="dropdown-toggle btn btn-default"  data-toggle="dropdown">{{ Auth::guard('admin')->user()->name }}
                         <span class="caret"></span></button>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ url('/logout') }}">Logout</a></li>
+                        <li><a href="/logout">Logout</a></li>
 
                     </ul>
                 </div>
 
-            @endif
-        </div>
+                @endif
 
-    </header>
+            </header>
 
     @yield('content')
 

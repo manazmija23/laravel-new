@@ -27,7 +27,7 @@ class PostsController extends Controller
             $posts->whereYear('created_at', $year);
         }
 
-        $posts = $posts->paginate(5);
+        $posts = $posts->paginate(6);
 
         $archives = Posts::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')
             ->groupBy('year', 'month')

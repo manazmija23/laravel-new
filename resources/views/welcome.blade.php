@@ -10,7 +10,7 @@
 
         <div class="flex-main">
 
-            <div>
+            <div class="flex-articles">
                 @foreach($posts as $post)
 
                     <div class="blog-article">
@@ -75,6 +75,7 @@
                 <div class="table table-striped sidebar-flex">
                     <h3>Archive</h3>
                     <hr>
+                    <a href="/">All News</a>
 
                     @foreach($archives as $arch)
 
