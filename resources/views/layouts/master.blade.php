@@ -35,6 +35,7 @@
                     <a class="{{ Request::url() == url('/comments-dash') ? 'active-nav-admin' : '' }}" href={{asset('comments-dash')}}>Post Comments</a>
                     <a class="{{ Request::url() == url('/products-comments') ? 'active-nav-admin' : '' }}" href={{asset('products-comments')}}>Product Comments</a>
                     <a class="{{ Request::url() == url('/messages') ? 'active-nav-admin' : '' }}" href={{asset('messages')}}>Messages</a>
+                    <a class="{{ Request::url() == url('/tags') ? 'active-nav-admin' : '' }}" href={{asset('tags')}}>Tags</a>
                 </nav>
 
                 <div class="dropdown login-name">

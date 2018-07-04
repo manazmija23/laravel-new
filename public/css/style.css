@@ -90,6 +90,10 @@ footer{
     border: 1px solid lightgrey;
 }
 
+.blog-article h1{
+    font-size: 22px;
+}
+
 a{
     color: #17a2b8;
 }
@@ -255,6 +259,7 @@ nav a:hover{
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
+    align-items: baseline;
 
 
 }
@@ -560,4 +565,16 @@ tr{
 .admin-button{
     margin-bottom: 20px;
     margin-left: 30px;
+}
+
+.create-tag{
+
+    background-color: gainsboro;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 5px;
+}
+
+.create-tag h2{
+    padding-bottom: 10px;
 }
