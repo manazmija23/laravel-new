@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Posts;
+use App\Post;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+
 
 class PostsController extends Controller
 {
@@ -15,7 +16,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Posts::latest();
+        $posts = Post::latest();
 
         if($month = request('month')) {
 
@@ -29,7 +30,7 @@ class PostsController extends Controller
 
         $posts = $posts->paginate(6);
 
-        $archives = Posts::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')
+        $archives = Post::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')
             ->groupBy('year', 'month')
             ->orderByRaw('min(created_at) desc')
             ->get()
@@ -72,7 +73,7 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        $posts = Posts::find($id);
+        $posts = Post::find($id);
 
         return view('news.show', compact('posts'));
     }

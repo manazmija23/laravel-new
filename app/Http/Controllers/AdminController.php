@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Posts;
+use App\Post;
 use Illuminate\Support\Facades\Storage;
+use App\Tag;
 
 class AdminController extends Controller
 {
@@ -25,7 +26,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $posts = Posts::latest()->paginate(6);
+        $posts = Post::latest()->paginate(6);
 
         return view('admin', compact('posts'));
 
@@ -39,7 +40,9 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('news.create');
+        $tags = Tag::all();
+
+        return view('news.create', compact('tags'));
     }
 
     /**
@@ -56,7 +59,7 @@ class AdminController extends Controller
             'content' => 'required',
         ]);
 
-        $posts = new Posts;
+        $posts = new Post;
 
         $posts->headline = request('headline');
         $posts->content = request('content');
@@ -80,6 +83,8 @@ class AdminController extends Controller
 
         $posts->images = $fileNameToStore;
         $posts->save();
+
+        $posts->tags()->sync($request->tags, false);
 
         return back();
     }
@@ -126,7 +131,7 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        $posts = Posts::find($id);
+        $posts = Post::find($id);
 
         if($posts->images != 'noimage.jpg'){
             //Delete image from folder storage/images

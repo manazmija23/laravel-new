@@ -17,6 +17,17 @@
             <p>{!! $posts->content !!}</p>
             <hr>
 
+            <div class="tags">
+
+                @foreach($posts->tags as $tag)
+
+                    <span class="label label-primary">{{$tag->name}}</span>
+
+                @endforeach
+
+
+            </div>
+
             <div class="published">
                 <span>
                    Published: {{$posts->created_at}}

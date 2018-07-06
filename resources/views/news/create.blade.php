@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('styles')
+    <link rel="stylesheet" href={{asset('css/select2.min.css')}}>
+    @endsection
+
 @section('content')
 
     <div class="main">
@@ -36,10 +40,35 @@
 
         </div>
 
+            {{ Form::label('tags', 'Tags:') }}
+            <select class="form-control select2-multi" name="tags[]" multiple="multiple" id="">
+
+                @foreach($tags as $tag)
+
+                    <option value="{{ $tag->id }}">
+                        {{ $tag->name }}
+                    </option>
+
+                    @endforeach
+            </select>
+            <br>
+            <br>
         {{Form::submit('Submit', ['class' =>'btn btn-primary '])}}
 
         {!! Form::close() !!}
 
     </div>
 
+@endsection
+
+
+
+@section('scripts')
+    <script type="text/javascript" src={{asset('js/select2.min.js')}}>
+
+    </script>
+
+    <script type="text/javascript">
+        $('.select2-multi').select2();
+    </script>
 @endsection

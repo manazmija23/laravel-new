@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Tag;
 
-class Posts extends Model
+class Post extends Model
 {
     public function comments(){
 
@@ -13,6 +13,7 @@ class Posts extends Model
     }
 
     protected $table = 'posts';
+
 
     public function tags()
     {
