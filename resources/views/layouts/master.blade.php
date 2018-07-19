@@ -37,7 +37,7 @@
                 <nav class="admin-dashboard">
                     <a class="{{ Request::url() == url('/admin') ? 'active-nav-admin' : '' }}" href={{asset('admin')}}>Posts</a>
                     <a class="{{ Request::url() == url('/products-dash') ? 'active-nav-admin' : '' }}" href={{asset('products-dash')}}>Products</a>
-                    <a class="{{ Request::url() == url('/comments-dash') ? 'active-nav-admin' : '' }}" href={{asset('comments-dash')}}>Post Comments</a>
+                    <a class="{{ Request::url() == url('/admin/comments') ? 'active-nav-admin' : '' }}" href={{asset('admin/comments')}}>Post Comments</a>
                     <a class="{{ Request::url() == url('/products-comments') ? 'active-nav-admin' : '' }}" href={{asset('products-comments')}}>Product Comments</a>
                     <a class="{{ Request::url() == url('/messages') ? 'active-nav-admin' : '' }}" href={{asset('messages')}}>Messages</a>
                     <a class="{{ Request::url() == url('/tags') ? 'active-nav-admin' : '' }}" href={{asset('tags')}}>Tags</a>

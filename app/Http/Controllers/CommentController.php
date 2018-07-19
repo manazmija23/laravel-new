@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Post;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 
-
-class PostsController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,31 +15,9 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::latest();
+        $comments = Comment::latest()->simplePaginate(10);
 
-        if($month = request('month')) {
-
-            $posts->whereMonth('created_at', Carbon::parse($month)->month);
-        }
-
-        if($year = request('year')) {
-
-            $posts->whereYear('created_at', $year);
-        }
-
-        $posts = $posts->simplePaginate(6);
-
-        $archives = Post::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')
-            ->groupBy('year', 'month')
-            ->orderByRaw('min(created_at) desc')
-            ->get()
-            ->toArray();
-
-
-
-        return view('welcome', compact('posts', 'archives'));
-
-
+        return view('comments.comments', compact('comments'));
     }
 
     /**
@@ -50,7 +27,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
@@ -59,10 +36,45 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $post_id)
     {
+        $this->validate($request, array(
+            'name'=> 'required|max:255',
+            'email'=> 'required|email|max:255',
+            'comment'=> 'required|min:2|max:2000'
+        ));
+
+        $post = Post::find($post_id);
+
+        $comment = new Comment;
+
+        $comment->name = $request->name;
+        $comment->email = $request->email;
+        $comment->comment = $request->comment;
+        $comment->approved = true;
+        $comment->post()->associate($post);
+
+        $comment->save();
 
 
+
+        return back();
+    }
+
+    public function approval(Request $request)
+    {
+        $comment = Comment::find($request->id);
+        $approveVal = $request->approved;
+        if ($approveVal == 'on'){
+            $approveVal=0;
+        }else{
+            $approveVal=1;
+        }
+
+        $comment->approved =$approveVal;
+        $comment->save();
+
+        return back();
     }
 
     /**
@@ -73,9 +85,7 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        $posts = Post::find($id);
-
-        return view('news.show', compact('posts'));
+        //
     }
 
     /**
@@ -109,6 +119,9 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $comment = Comment::find($id);
+
+        $comment->delete();
+        return back();
     }
 }

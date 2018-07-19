@@ -81,13 +81,15 @@ footer{
 }
 
 .blog-article{
-    width: 330px;
+    width: 319px;
     margin-bottom: 10px;
     margin-top: 20px;
-    padding: 20px 40px;
+    padding: 10px 15px;
     background-color: white;
     color: black;
     border: 1px solid lightgrey;
+    margin: 10px;
+    box-shadow: 1px 1px 10px #888888
 }
 
 .blog-article h1{
@@ -257,11 +259,8 @@ nav a:hover{
 
 .flex-main{
     display: flex;
-    flex-wrap: nowrap;
+
     justify-content: space-between;
-    align-items: baseline;
-
-
 }
 
 .bottom-price{
@@ -302,7 +301,7 @@ nav a:hover{
 
 .modal-content{
     width:800px;
-    top: 100px;
+    top: 50px;
 
     left: 50%;
     transform: translate(-50%, 0);
@@ -559,7 +558,7 @@ tr{
 .flex-articles{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+
 }
 
 .admin-button{
