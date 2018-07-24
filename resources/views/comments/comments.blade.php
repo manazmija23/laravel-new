@@ -24,7 +24,7 @@
                     <td>{{ $comment->email }}</td>
 
                     <td class="d-flex flex-row justify-content-around" style="width: 230px">
-                        <form action="{{url('toggle-approve')}}" method="POST">
+                        <form action="{{url('/admin/comments/toggle-approve')}}" method="POST">
                             {{ csrf_field() }}
                             <input @if ($comment->approved == 0)
                                    {{"checked"}}
@@ -40,7 +40,7 @@
 @endif ">
                         </form>
 
-                        <form action="{{route('comments/{comments}', $comment->id)}}" method="POST">
+                        <form action="{{route('comments.destroy', $comment->id)}}" method="POST">
                             {{csrf_field()}}
                             <input name="_method" type="hidden" value="delete">
                             <button class="btn btn-danger" type="submit">Delete</button>

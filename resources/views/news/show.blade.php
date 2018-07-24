@@ -36,6 +36,43 @@
 
         </div>
 
+
+        <br><br>
+
+        <div class="number-of-comments">
+            <!-- Counting only approved comments -->
+            <h4 style="color: dimgrey">{{ $posts->comments()->where('approved', 0)->count() }}</h4>
+
+
+            <i style="color: dimgrey" class="fas fa-comment-alt"></i>
+            <span style="color: dimgrey">Komentara</span>
+
+        </div>
+
+        @foreach($posts->comments as $comment)
+
+            @if($comment->approved =='0')
+
+                <div class="comment">
+
+                    <img src={{ "https://www.gravatar.com/avatar/" . md5(strtolower(trim($comment->email))) . "?d=mm"/* default gravatar ext */ }}
+                            alt="" class="author-image">
+
+                    <div class="author-right-side">
+
+                        <h4>{{ $comment->name }}</h4>
+
+                        <span class="time">{{ $comment->created_at->diffForHumans() }}</span>
+
+                        <p class="author-comment">{!! $comment->comment !!} </p>
+
+                    </div>
+
+                </div>
+            @endif
+
+        @endforeach
+
         <div class="row" style="margin-top: 15px">
 
             <div class="comment-form">

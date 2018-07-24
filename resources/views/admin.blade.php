@@ -14,7 +14,7 @@
                 <div class="blog-article blog-admin-article">
                     <img class="img-fluid img-blog" src={{ 'storage/images/' . $post->images }} alt="">
                     <h1>{{ $post->headline }}</h1>
-                    <p>{!! $post->content !!}</p>
+                    <p>{!! str_limit($post->content, 300) !!}</p>
                     <br>
                     <br>
                     <div class="flex-button">

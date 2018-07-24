@@ -6,7 +6,8 @@
 
 
         <h1>
-            {{ $tag->name }} Tag <small>{{ $tag->posts()->count() }} Posts</small>
+            Tags
+
         </h1>
 
 

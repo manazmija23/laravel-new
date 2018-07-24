@@ -88,7 +88,8 @@ footer{
     background-color: white;
     color: black;
     border: 1px solid lightgrey;
-    margin: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
     box-shadow: 1px 1px 10px #888888
 }
 
@@ -235,7 +236,7 @@ nav a:hover{
 }
 
 .sidebar{
-    width: 230px;
+    width: 190px;
     height: 500px;
     background-color: white;
     margin-top: 20px;
@@ -556,6 +557,7 @@ tr{
 }
 
 .flex-articles{
+    width: 1070px;
     display: flex;
     flex-wrap: wrap;
 
