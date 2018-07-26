@@ -26,10 +26,6 @@
 </head>
 <body>
 
-    <header>
-
-    </header>
-
         @if(Auth::guard('admin')->check())
 
             <header class="admin-header">
@@ -51,11 +47,22 @@
 
                     </ul>
                 </div>
-
-                @endif
-
             </header>
 
+            @else
+            <header>
+                <nav class="navmenu">
+                    <a class="{{ Request::url() == url('/') ? 'active-nav' : '' }}" href={{asset('/')}}>News</a>
+                    <a class="{{ Request::url() == url('/football') ? 'active-nav' : '' }}" href={{asset('/tags/3')}}>Football</a>
+                    <a class="{{ Request::url() == url('/blog') ? 'active-nav' : '' }}" href={{asset('/tags/1')}}>Basketball</a>
+                    <a class="{{ Request::url() == url('/products') ? 'active-nav' : '' }}" href={{asset('/tags/2')}}>Tennis</a>
+
+                </nav>
+            </header>
+
+        @endif
+
+    @yield('header')
     @yield('content')
 
     <footer>

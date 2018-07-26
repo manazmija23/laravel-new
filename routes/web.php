@@ -8,6 +8,7 @@ Route::resource('/tags', 'TagController');
 
 
 
+
 Route::get('/home', 'HomeController@index');
 Route::get('logout', 'Auth\LoginController@logout');
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Tag;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -36,9 +37,10 @@ class PostsController extends Controller
             ->get()
             ->toArray();
 
+        $tags = Tag::all();
 
 
-        return view('welcome', compact('posts', 'archives'));
+        return view('welcome', compact('posts', 'archives', 'tags'));
 
 
     }

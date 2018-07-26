@@ -8,10 +8,11 @@ use Illuminate\Http\Request;
 
 class TagController extends Controller
 {
-    public function __construct()
+    /*public function __construct()
     {
         $this->middleware('auth:admin');
     }
+    */
 
     /**
      * Display a listing of the resource.
@@ -23,6 +24,7 @@ class TagController extends Controller
         $tags = Tag::all();
 
         return view('tags.index', compact('tags'));
+
     }
 
     /**
@@ -65,6 +67,7 @@ class TagController extends Controller
     {
         $tag = Tag::find($id);
 
+
         return view('tags.show', compact('tag'));
     }
 
@@ -102,5 +105,11 @@ class TagController extends Controller
         //
     }
 
+    public function menuTags()
+    {
+        $tags = Tag::all();
+
+        return view('welcome', compact('tags'));
+    }
 
 }
