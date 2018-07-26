@@ -4,11 +4,9 @@
 
     <div class="main">
 
-        <div class="paginate">
-            {{ $posts->links() }}
-        </div>
-
         <div class="flex-main">
+
+
 
             <div class="flex-articles">
                 @foreach($posts as $post)
